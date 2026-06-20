@@ -78,8 +78,8 @@ const AdminDashboard = () => {
   };
 
   const generateProjectLink = (slug) => {
-    const baseUrl = `${import.meta.env.VITE_API_URL}/projects`;
-    return `${baseUrl}/${slug}`;
+    const baseUrl = window.location.origin;
+return `${baseUrl}/projects/${slug}`;
   };
 
   const copyProjectLink = (projectId, slug) => {
