@@ -12,8 +12,9 @@ function App() {
     <Router>
       <Routes>
         {/* Public Routes */}
+        <Route path="/" element={<PortfolioPage />} />
         <Route path="/projects/:slug" element={<ProjectDetailPage />} />
-        <Route path="/" element={<AdminLogin />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
 
         {/* Admin Routes - Protected */}
         <Route
