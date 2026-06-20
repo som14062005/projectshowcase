@@ -132,7 +132,7 @@ const EditProjectPage = () => {
     try {
       const token = localStorage.getItem('adminToken');
       const res   = await axios.get(
-        `http://localhost:3000/api/admin/projects/${projectId}/content`,
+        `${import.meta.env.VITE_API_URL}/api/admin/projects/${projectId}/content`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setProject(res.data.project);
@@ -151,7 +151,7 @@ const EditProjectPage = () => {
     try {
       const token = localStorage.getItem('adminToken');
       await axios.put(
-        `http://localhost:3000/api/admin/projects/${projectId}/content`,
+        `${import.meta.env.VITE_API_URL}/api/admin/projects/${projectId}/content`,
         sanitizeContent(content),
         { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
       );

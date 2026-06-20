@@ -26,7 +26,7 @@ const AdminDashboard = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await axios.get('http://localhost:3000/api/admin/projects', {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/projects`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setProjects(response.data);
@@ -49,7 +49,7 @@ const AdminDashboard = () => {
     try {
       const token = localStorage.getItem('adminToken');
       const response = await axios.post(
-        'http://localhost:3000/api/admin/projects',
+        `${import.meta.env.VITE_API_URL}/api/admin/projects`,
         { projectName: newProjectName },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -67,7 +67,7 @@ const AdminDashboard = () => {
 
     try {
       const token = localStorage.getItem('adminToken');
-      await axios.delete(`http://localhost:3000/api/admin/projects/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/admin/projects/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setProjects(projects.filter(p => p._id !== id));
@@ -78,8 +78,8 @@ const AdminDashboard = () => {
   };
 
   const generateProjectLink = (slug) => {
-    const baseUrl = `${window.location.protocol}//${window.location.host}`;
-    return `${baseUrl}/projects/${slug}`;
+    const baseUrl = `${import.meta.env.VITE_API_URL}/projects`;
+    return `${baseUrl}/${slug}`;
   };
 
   const copyProjectLink = (projectId, slug) => {

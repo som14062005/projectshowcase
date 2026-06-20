@@ -14,7 +14,7 @@ const ProtectedRoute = ({ children }) => {
 
   const checkAccess = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/settings/access-mode');
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/settings/access-mode`);
       const { requiresPasscode } = response.data;
 
       if (requiresPasscode) {

@@ -171,7 +171,7 @@ const OTPPage = () => {
   setError('');
   
   try {
-    const response = await axios.post('http://localhost:3000/api/auth/verify-passcode', {
+    const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/verify-passcode`, {
       passcode: otpValue
     });
     

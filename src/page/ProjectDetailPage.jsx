@@ -317,7 +317,7 @@ const ProjectDetailPage = () => {
   const fetchProject = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:3000/api/projects/slug/${slug}`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/projects/slug/${slug}`);
       setProject(res.data.project);
       setContent(res.data.content);
     } catch (err) {
